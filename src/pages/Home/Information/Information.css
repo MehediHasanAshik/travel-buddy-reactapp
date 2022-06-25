@@ -22,7 +22,7 @@
     font-size: 40px;
 }
 
-.info-cart img{
+.img-cart img{
     padding: 20px;
     max-width: 600px;
 }
@@ -31,7 +31,13 @@
     .info-cart{
         display: block;
     }
-    .info-cart img{
+    .img-cart img{
         max-width: 400px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .img-cart img{
+        max-width: 300px;
     }
   }
