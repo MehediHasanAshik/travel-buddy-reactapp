@@ -1,0 +1,37 @@
+.info-cart{
+    margin: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.info-cart :any-link{
+    text-decoration: none;
+    transition: font-size 0.5s;
+}
+
+.info-cart :any-link:hover{
+    font-size: 20px;
+}
+
+.info-cart h1{
+    color: rgb(209, 76, 24);
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.info-cart img{
+    padding: 20px;
+    max-width: 600px;
+}
+
+@media only screen and (max-width: 950px) {
+    .info-cart{
+        display: block;
+    }
+    .info-cart img{
+        max-width: 400px;
+    }
+  }

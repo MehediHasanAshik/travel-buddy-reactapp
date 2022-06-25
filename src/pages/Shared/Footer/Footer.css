@@ -1,0 +1,15 @@
+.footer-container {
+    background-color: rgb(127, 185, 166);
+}
+
+.fb-icon:hover {
+    color: #184aad;
+}
+
+.ins-icon:hover{
+    color:  #F56040;
+}
+
+.tw-icon:hover{
+    color: #00acee;
+}

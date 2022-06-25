@@ -1,0 +1,18 @@
+.shipping-form{
+    width: 50%;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.shipping-form > input{
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.error{
+    color: red;
+}

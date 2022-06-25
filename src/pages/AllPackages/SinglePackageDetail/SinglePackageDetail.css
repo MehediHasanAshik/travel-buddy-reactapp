@@ -1,0 +1,16 @@
+.detail {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.detail:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.detail h2 {
+    color: rgb(212, 73, 9);
+}

@@ -1,0 +1,35 @@
+.alldestination-container{
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 30px;
+}
+
+.cart{
+    margin: 10px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+    transition: transform .2s;
+}
+
+.cart :any-link{
+    text-decoration: none;
+}
+
+.cart:hover{
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+@media only screen and (max-width: 950px) {
+    .alldestination-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .alldestination-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+  }
