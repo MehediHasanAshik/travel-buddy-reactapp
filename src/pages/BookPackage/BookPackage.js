@@ -3,10 +3,9 @@ import './BookPackage.css'
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hook/useAuth';
 import { useRef } from 'react';
-import { useEffect } from 'react';
 
 const BookPackage = () => {
-    const { register, reset, formState: { errors } } = useForm();
+    const { register, formState: { errors } } = useForm();
     const { user } = useAuth();
 
     const nameRef = useRef();
@@ -32,7 +31,7 @@ const BookPackage = () => {
 
         console.log(newUser)
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://stormy-mesa-42639.herokuapp.com/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,7 +39,7 @@ const BookPackage = () => {
             body: JSON.stringify(newUser)
         })
             .then(()=> {
-                alert('Your data has been inserted.')
+                alert('Your Package has been booked.')
             })
 
         e.preventDefault();
