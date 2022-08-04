@@ -7,9 +7,10 @@ const AllPackages = () => {
     const [packages, setPackages] = useState({});
 
     useEffect(() => {
-        fetch('package_detail.json')
+        fetch('https://stormy-mesa-42639.herokuapp.com/package_detail')
+        // fetch('package_detail.json')
             .then(res => res.json())
-            .then(data => setPackages(data))
+            .then(data => setPackages(data[0]))
     }, []);
 
 
