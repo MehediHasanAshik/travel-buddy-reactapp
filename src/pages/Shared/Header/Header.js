@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png'
 import useAuth from '../../../Hook/useAuth';
 import './Header.css'
