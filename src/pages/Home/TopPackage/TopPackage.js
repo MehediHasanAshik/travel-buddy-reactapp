@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import cxBazar from '../../../assets/images/cox-bazar (8).jpg'
 import sajek from '../../../assets/images/sajek (3).jpg'

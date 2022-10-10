@@ -10,19 +10,21 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { signInUsingGoogle, isLoading, user, loginUser } = useAuth();
+  const { signInUsingGoogle, isLoading, user, loginUser, error } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const privateLink = location.state?.from;
+  const privateLink = location?.state?.from || "";
 
   const handleGoogleSignIn = (e) => {
-    e.preventDefault();
     signInUsingGoogle(navigate, privateLink);
+
+    e.preventDefault();
   };
 
   const handleOnSubmit = (e) => {
-    e.preventDefault();
     loginUser(email, password, navigate, privateLink);
+
+    e.preventDefault();
   };
 
   return (
@@ -33,7 +35,7 @@ const Login = () => {
             <Form.Label>Email Address</Form.Label>
             <Form.Control
               type="email"
-              onChange={(e) => setEmail(e.target?.value)}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter email"
             />
             <Form.Text className="text-muted">
@@ -45,7 +47,7 @@ const Login = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
-              onChange={(e) => setPassword(e.target?.value)}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
             />
           </Form.Group>
@@ -64,6 +66,11 @@ const Login = () => {
         {user.email && (
           <Alert sx={{ width: "75%", margin: "auto" }} severity="success">
             You Have Successfully Logged In{" "}
+          </Alert>
+        )}
+        {error && (
+          <Alert sx={{ width: "75%", margin: "auto" }} severity="error">
+            {error}
           </Alert>
         )}
         <p>

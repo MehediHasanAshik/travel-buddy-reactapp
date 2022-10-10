@@ -31,6 +31,13 @@
 
 .pkg-buy {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.pkg-buy>h4{
+    padding: 0 20px;
 }
 
 p>span {
