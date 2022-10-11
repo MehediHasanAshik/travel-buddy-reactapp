@@ -10,14 +10,11 @@ const AllPackages = () => {
 
   useEffect(() => {
     setLoading(true);
-    const unSub = () => {
-      fetch("https://stormy-mesa-42639.herokuapp.com/package_detail")
-        // fetch('package_detail.json')
-        .then((res) => res.json())
-        .then((data) => setPackages(data[0]))
-        .finally(() => setLoading(false));
-    };
-    return () => unSub();
+    fetch("https://stormy-mesa-42639.herokuapp.com/package_detail")
+      // fetch('package_detail.json')
+      .then((res) => res.json())
+      .then((data) => setPackages(data[0]))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
@@ -31,7 +28,7 @@ const AllPackages = () => {
         />
       )}
       <div className="single-cart">
-        {packages?.details?.map((detail) => (
+        {packages.details?.map((detail) => (
           <SinglePageDetail key={detail.p_id} detail={detail} />
         ))}
       </div>

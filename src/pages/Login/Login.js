@@ -13,7 +13,7 @@ const Login = () => {
   const { signInUsingGoogle, isLoading, user, loginUser, error } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const privateLink = location?.state?.from || "";
+  const privateLink = location.state?.from || "/home";
 
   const handleGoogleSignIn = (e) => {
     signInUsingGoogle(navigate, privateLink);

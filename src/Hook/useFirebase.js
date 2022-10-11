@@ -74,21 +74,25 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const logout = () => {
-    signOut(auth).then(() => {
-      setUser({});
-    });
-  };
-
+  //check state 
   useEffect(() => {
-    const unSub = () =>
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setUser(user);
-        }
-      });
+    const unSub = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      }
+    });
     return () => unSub();
-  }, []);
+  }, [auth]);
+
+  //logout 
+  const logout = () => {
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {
+        setUser({});
+      })
+      .finally(() => setIsLoading(false));
+  };
 
   return {
     user,
