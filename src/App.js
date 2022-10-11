@@ -12,6 +12,7 @@ import Register from './pages/Register/Register';
 import AuthProvider from './Context/AuthProvider';
 import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
 import BookPackage from './pages/BookPackage/BookPackage';
+import Booked from './pages/Booked/Booked';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               } />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/booked' element={<Booked />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
           <Footer />

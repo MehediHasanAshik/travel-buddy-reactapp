@@ -23,14 +23,14 @@ const AllPackages = () => {
   return (
     <div>
       <h1>Available Packages</h1>
+      {loading && (
+        <CircularProgress
+          size="4rem"
+          color="inherit"
+          style={{ margin: "auto" }}
+        />
+      )}
       <div className="single-cart">
-        {loading && (
-          <CircularProgress
-            size="4rem"
-            color="inherit"
-            style={{ margin: "auto" }}
-          />
-        )}
         {packages?.details?.map((detail) => (
           <SinglePageDetail key={detail.p_id} detail={detail} />
         ))}

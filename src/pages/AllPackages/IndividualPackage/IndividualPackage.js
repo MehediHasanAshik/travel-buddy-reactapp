@@ -5,9 +5,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./IndividualPackage.css";
 
 const IndividualPackage = () => {
-  const [count, setCount] = useState(1);
-  const [total, setTotal] = useState(1);
-
   const navigate = useNavigate();
 
   const { state } = useLocation();
@@ -23,15 +20,20 @@ const IndividualPackage = () => {
     gallery,
   } = detail;
 
+  const [count, setCount] = useState(1);
+  const [total, setTotal] = useState(() => {
+    return p_price;
+  });
+
   const handleDecrement = () => {
     if (count > 1) {
       setCount((prevCount) => prevCount - 1);
-      setTotal((prevPrice) => prevPrice - p_price);
+      setTotal((Prev) => Prev - p_price);
     }
   };
   const handleIncrement = () => {
     setCount((prevCount) => prevCount + 1);
-    setTotal((prevPrice) => prevPrice + p_price);
+    setTotal((Prev) => Prev + p_price);
   };
 
   const handleBooking = () => {
@@ -79,7 +81,7 @@ const IndividualPackage = () => {
           <p>
             Total Amount:
             <span id="total-amount">
-              <b>{count === 1 ? p_price : total}</b>
+              <b>{total}</b>
             </span>
             TK
           </p>

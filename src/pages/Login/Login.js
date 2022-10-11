@@ -58,7 +58,6 @@ const Login = () => {
         </Form>
         <p> Or</p>
         <Button variant="danger" className="mb-5" onClick={handleGoogleSignIn}>
-          {" "}
           <i className="fa-brands fa-google"></i> Google SignIn
         </Button>
         <br />

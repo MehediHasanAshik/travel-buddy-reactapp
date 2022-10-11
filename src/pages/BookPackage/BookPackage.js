@@ -1,79 +1,98 @@
-import React from 'react';
-import './BookPackage.css'
-import { useForm } from 'react-hook-form';
-import useAuth from '../../Hook/useAuth';
-import { useRef } from 'react';
+import React from "react";
+import "./BookPackage.css";
+import { useForm } from "react-hook-form";
+import useAuth from "../../Hook/useAuth";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const BookPackage = () => {
-    const { register, formState: { errors } } = useForm();
-    const { user } = useAuth();
+  const navigate = useNavigate();
+  const {
+    register,
+    formState: { errors },
+  } = useForm();
+  const { user } = useAuth();
 
-    const nameRef = useRef();
-    const emailRef = useRef();
-    const addressRef = useRef();
-    const cityRef = useRef();
-    const phoneRef = useRef();
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const addressRef = useRef();
+  const cityRef = useRef();
+  const phoneRef = useRef();
 
-    const handleSubmit = (e) => {
-        const name = nameRef.current.value;
-        const email = emailRef.current.value;
-        const address = addressRef.current.value;
-        const city = cityRef.current.value;
-        const phone = phoneRef.current.value;
+  const handleSubmit = (e) => {
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    const address = addressRef.current.value;
+    const city = cityRef.current.value;
+    const phone = phoneRef.current.value;
 
-        const newUser = {
-            "name": name,
-            "email": email,
-            "address": address,
-            "city": city,
-            "phone": phone
-        };
+    const newUser = {
+      name: name,
+      email: email,
+      address: address,
+      city: city,
+      phone: phone,
+    };
 
-        console.log(newUser)
-
-        fetch('https://stormy-mesa-42639.herokuapp.com/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newUser)
-        })
-            .then(()=> {
-                alert('Your Package has been booked.')
-            })
-
-        e.preventDefault();
-        e.target.reset();
+    // console.log(newUser)
+    let ans = window.confirm("Do You Want to Book The Package?");
+    if (ans) {
+      fetch("https://stormy-mesa-42639.herokuapp.com/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      }).then(() => {
+        navigate("/booked");
+      });
+    } else {
     }
 
-    return (
-        <div>
-            <div>
-                <h3>Enter your information to Book Package</h3>
-            </div>
-            <form className='shipping-form' onSubmit={handleSubmit}>
-                <input defaultValue={user.displayName} {...register("name", { required: true })} ref={nameRef} />
-                <input defaultValue={user.email} {...register("email", { required: true })} ref={emailRef} />
-                {errors.email && <span className='error'>This field is required</span>}
-                <input placeholder='address' defaultValue="" {...register("address")} ref={addressRef} />
-                <input placeholder='city' defaultValue="" {...register("city")} ref={cityRef} />
-                <input placeholder='phone' defaultValue="" {...register("phone")} ref={phoneRef} />
+    e.preventDefault();
+    e.target.reset();
+  };
 
-                <input type='submit' value='Submit' />
-            </form>
+  return (
+    <div>
+      <div>
+        <h3>Enter your information to Book Package</h3>
+      </div>
+      <form className="shipping-form" onSubmit={handleSubmit}>
+        <input
+          defaultValue={user.displayName}
+          {...register("name", { required: true })}
+          ref={nameRef}
+        />
+        <input
+          defaultValue={user.email}
+          {...register("email", { required: true })}
+          ref={emailRef}
+        />
+        {errors.email && <span className="error">This field is required</span>}
+        <input
+          placeholder="address"
+          defaultValue=""
+          {...register("address")}
+          ref={addressRef}
+        />
+        <input
+          placeholder="city"
+          defaultValue=""
+          {...register("city")}
+          ref={cityRef}
+        />
+        <input
+          placeholder="phone"
+          defaultValue=""
+          {...register("phone")}
+          ref={phoneRef}
+        />
 
-            {/* <form className='shipping-form' onSubmit={handleSubmit}>
-                <input type="text" defaultValue={user.displayName} ref={nameRef} />
-                <input type="email" name="" id="" defaultValue={user.email} ref={emailRef} />
-                <input placeholder='address' type="text" name="" id="" ref={addressRef} />
-                <input placeholder='city' type="text" name="" id="" ref={cityRef} />
-                <input placeholder='phone' type="phone" name="" id="" ref={phoneRef} />
-
-                <input type="submit" value="Submit" />
-
-            </form> */}
-        </div>
-    );
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  );
 };
 
 export default BookPackage;
