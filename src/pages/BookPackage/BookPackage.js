@@ -37,7 +37,7 @@ const BookPackage = () => {
     // console.log(newUser)
     let ans = window.confirm("Do You Want to Book The Package?");
     if (ans) {
-      fetch("https://stormy-mesa-42639.herokuapp.com/users", {
+      fetch("https://reactravelbuddy.up.railway.app/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

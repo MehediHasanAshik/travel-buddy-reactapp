@@ -10,7 +10,7 @@ const AllPackages = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://stormy-mesa-42639.herokuapp.com/package_detail")
+    fetch("https://reactravelbuddy.up.railway.app/package_detail")
       // fetch('package_detail.json')
       .then((res) => res.json())
       .then((data) => setPackages(data[0]))
